@@ -6,4 +6,6 @@ from subprocess import *
 p = Popen(["ping", sys.argv[1]], stdout=PIPE)
 while True:
     line = p.stdout.readline().strip()
-    if 'bytes from' in line: sys.exit(0)
+    if 'bytes from' in line:
+        p.terminate()
+        sys.exit(0)
