@@ -12,7 +12,7 @@ for host in $HEAD_HOST ${COMPUTE_HOSTS//,/ }; do
     ssh -o StrictHostKeyChecking=no root@$host /var/tmp/lvm-kexec-reset.sh
 done
 
-# wait for the host to come up (2 ping responses or timeout after 90 seconds)
+# wait for the host to come up (2 ping responses or timeout after 5 minutes)
 echo "Jenkins: Waiting for head host to return after reset..."
 if ! timeout 300 ./ping.py $HEAD_HOST; then
     echo "Jenkins: ERROR: Head node did not come back up after reset"
